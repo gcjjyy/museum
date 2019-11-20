@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <conio.h>
 #include "common.h"
 #include "director.h"
 #include "museum.h"
@@ -14,7 +15,16 @@ Museum *Museum::shared() {
 }
 
 void Museum::run() {
-    printf("run()\n");
+    m_running = TRUE;
+
+    while (m_running) {
+        if (kbhit()) {
+            char ch = getch();
+            if (ch == 27) {
+                break;
+            }
+        }
+    }
 
     if (m_shared) {
         delete m_shared;

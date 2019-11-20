@@ -13,6 +13,9 @@ class Museum {
     ~Museum();
 
    private:
+    boolean_t m_running;
+
+   private:
     static Museum *m_shared;
 };
 
