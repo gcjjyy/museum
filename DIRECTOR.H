@@ -2,6 +2,7 @@
 #define __DIRECTOR_H__
 
 #include "stage.h"
+#include "vec.h"
 
 class Director {
    public:
@@ -15,6 +16,9 @@ class Director {
    private:
     Director();
     ~Director();
+
+   private:
+    vec_void_t m_stages;
 
    private:
     static Director *m_shared;

@@ -12,19 +12,33 @@ Director *Director::shared() {
 }
 
 void Director::pushStage(Stage *stage) {
+    vec_push(&this->m_stages, (void *)stage);
     stage->onLoad();
 }
 
 Stage *Director::popStage() {
-    return NULL;
+    if (this->m_stages.length > 0) {
+        ((Stage *)vec_last(&this->m_stages))->onUnload();
+        return (Stage *)vec_pop(&this->m_stages);
+    } else {
+        return NULL;
+    }
 }
 
 Stage *Director::replaceStage(Stage *stage) {
-    return NULL;
+    if (this->m_stages.length > 0) {
+        Stage *prev = (Stage *)vec_pop(&this->m_stages);
+        vec_push(&this->m_stages, stage);
+        return prev;
+    } else {
+        return NULL;
+    }
 }
 
 Director::Director() {
+    vec_init(&this->m_stages);
 }
 
 Director::~Director() {
+    vec_deinit(&this->m_stages);
 }
