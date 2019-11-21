@@ -1,4 +1,4 @@
-#include "scene.h"
+#include <museum/scene.h>
 
 Scene::Scene() {
     m_sceneRoot = new Actor();

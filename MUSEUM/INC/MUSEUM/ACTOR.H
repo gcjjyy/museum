@@ -1,8 +1,8 @@
 #ifndef __ACTOR_H__
 #define __ACTOR_H__
 
-#include "common.h"
-#include "vec.h"
+#include <museum/common.h>
+#include <vec/vec.h>
 
 class Scene;
 

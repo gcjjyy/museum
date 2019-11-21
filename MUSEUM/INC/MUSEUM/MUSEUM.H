@@ -1,10 +1,10 @@
 #ifndef __MUSEUM_H__
 #define __MUSEUM_H__
 
-#include "director.h"
-#include "scene.h"
-#include "actor.h"
-#include "sprite.h"
+#include <museum/director.h>
+#include <museum/scene.h>
+#include <museum/actor.h>
+#include <museum/sprite.h>
 
 class Museum {
    public:

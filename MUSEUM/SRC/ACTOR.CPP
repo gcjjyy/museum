@@ -1,4 +1,4 @@
-#include "actor.h"
+#include <museum/actor.h>
 
 Actor::Actor() {
 }

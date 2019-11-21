@@ -1,8 +1,8 @@
 #ifndef __DIRECTOR_H__
 #define __DIRECTOR_H__
 
-#include "scene.h"
-#include "vec.h"
+#include <museum/scene.h>
+#include <vec/vec.h>
 
 class Director {
    public:

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "sprite.h"
+#include <museum/sprite.h>
 
 Sprite::Sprite(uint8_t *buf) {
 }

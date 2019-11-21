@@ -1,7 +1,7 @@
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
 
-#include "actor.h"
+#include <museum/actor.h>
 
 class Sprite : public Actor {
    public:

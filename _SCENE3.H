@@ -1,4 +1,4 @@
-#include <scene.h>
+#include <museum/scene.h>
 
 class Scene3 : public Scene {
    public:

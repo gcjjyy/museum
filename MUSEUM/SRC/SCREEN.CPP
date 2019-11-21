@@ -1,7 +1,7 @@
 #include <conio.h>
 #include <i86.h>
 #include <stdio.h>
-#include "screen.h"
+#include <museum/screen.h>
 
 #define VRAM ((uint8_t far *)0xa0000)
 

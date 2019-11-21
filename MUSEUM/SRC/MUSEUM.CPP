@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <conio.h>
-#include "common.h"
-#include "director.h"
-#include "museum.h"
-#include "screen.h"
+#include <museum/common.h>
+#include <museum/director.h>
+#include <museum/museum.h>
+#include <museum/screen.h>
 
 Museum *Museum::shared() {
     static Museum inst;

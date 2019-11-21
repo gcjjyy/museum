@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <director.h>
+#include <museum/director.h>
 #include "_scene2.h"
 
 void Scene2::onLoad() {

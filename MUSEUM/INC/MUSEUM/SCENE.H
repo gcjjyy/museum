@@ -1,9 +1,9 @@
 #ifndef __SCENE_H__
 #define __SCENE_H__
 
-#include "actor.h"
-#include "common.h"
-#include "vec.h"
+#include <museum/actor.h>
+#include <museum/common.h>
+#include <vec.h>
 
 class Scene {
    public:

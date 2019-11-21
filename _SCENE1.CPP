@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <museum.h>
+#include <museum/museum.h>
 #include "_scene1.h"
 #include "_scene2.h"
 

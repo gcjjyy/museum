@@ -1,7 +1,7 @@
 #ifndef __SCREEN_H__
 #define __SCREEN_H__
 
-#include "COMMON.H"
+#include <museum/common.h>
 
 class Screen {
    public:

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "director.h"
+#include <museum/director.h>
 
 Director *Director::shared() {
     static Director inst;
