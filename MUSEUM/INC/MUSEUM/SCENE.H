@@ -3,7 +3,7 @@
 
 #include <museum/actor.h>
 #include <museum/common.h>
-#include <vec.h>
+#include <vec/vec.h>
 
 class Scene {
    public:

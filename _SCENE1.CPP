@@ -5,7 +5,6 @@
 
 void Scene1::onLoad() {
     printf("Scene1 Created\n");
-
     this->getSceneRoot()->addActor(new Sprite(NULL));
 }
 
