@@ -1,18 +1,18 @@
 #include <director.h>
 #include <museum.h>
 
-#include "_stage1.h"
-#include "_stage2.h"
-#include "_stage3.h"
+#include "_scene1.h"
+#include "_scene2.h"
+#include "_scene3.h"
 
 int main(int argc, char *argv[]) {
-    Stage1 *stage1 = new Stage1();
+    Scene1 *scene1 = new Scene1();
 
-    Director::shared()->pushStage(stage1);
+    Director::shared()->pushScene(scene1);
 
     Museum::shared()->run();
 
-    delete Director::shared()->popStage();
+    delete Director::shared()->popScene();
 
     return 0;
 }

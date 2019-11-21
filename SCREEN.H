@@ -5,8 +5,7 @@
 
 class Screen {
    public:
-    Screen();
-    ~Screen();
+    static Screen *shared();
 
    public:
     void setMode(uint8_t mode);
@@ -14,6 +13,10 @@ class Screen {
     int setPaletteFromFile(const char *filename);
 
     void putPixel(int16_t x, int16_t y, uint8_t index);
+
+   private:
+    Screen();
+    ~Screen();
 
    private:
     uint32_t m_scanLinePos[SCREEN_HEIGHT];

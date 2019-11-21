@@ -1,7 +1,7 @@
 #ifndef __DIRECTOR_H__
 #define __DIRECTOR_H__
 
-#include "stage.h"
+#include "scene.h"
 #include "vec.h"
 
 class Director {
@@ -9,19 +9,17 @@ class Director {
     static Director *shared();
 
    public:
-    void pushStage(Stage *stage);
-    Stage *popStage();
-    Stage *replaceStage(Stage *stage);
+    void pushScene(Scene *scene);
+    Scene *popScene();
+    Scene *replaceScene(Scene *scene);
+    void drawScene();
 
    private:
     Director();
     ~Director();
 
    private:
-    vec_void_t m_stages;
-
-   private:
-    static Director *m_shared;
+    vec_void_t m_scenes;
 };
 
 #endif

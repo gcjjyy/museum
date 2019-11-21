@@ -3,21 +3,20 @@
 #include "common.h"
 #include "director.h"
 #include "museum.h"
-
-Museum *Museum::m_shared = NULL;
+#include "screen.h"
 
 Museum *Museum::shared() {
-    if (!m_shared) {
-        m_shared = new Museum();
-    }
-
-    return m_shared;
+    static Museum inst;
+    return &inst;
 }
 
 void Museum::run() {
-    m_running = TRUE;
+    Screen::shared()->setMode(0x13);
 
+    m_running = TRUE;
     while (m_running) {
+        Director::shared()->drawScene();
+
         if (kbhit()) {
             char ch = getch();
             if (ch == 27) {
@@ -26,10 +25,7 @@ void Museum::run() {
         }
     }
 
-    if (m_shared) {
-        delete m_shared;
-        m_shared = NULL;
-    }
+    Screen::shared()->setMode(0x03);
 }
 
 Museum::Museum() {

@@ -1,44 +1,46 @@
 #include <stdio.h>
 #include "director.h"
 
-Director *Director::m_shared = NULL;
-
 Director *Director::shared() {
-    if (!m_shared) {
-        m_shared = new Director();
-    }
-
-    return m_shared;
+    static Director inst;
+    return &inst;
 }
 
-void Director::pushStage(Stage *stage) {
-    vec_push(&this->m_stages, (void *)stage);
-    stage->onLoad();
+void Director::pushScene(Scene *scene) {
+    vec_push(&this->m_scenes, (void *)scene);
+    scene->onLoad();
 }
 
-Stage *Director::popStage() {
-    if (this->m_stages.length > 0) {
-        ((Stage *)vec_last(&this->m_stages))->onUnload();
-        return (Stage *)vec_pop(&this->m_stages);
+Scene *Director::popScene() {
+    if (this->m_scenes.length) {
+        ((Scene *)vec_last(&this->m_scenes))->onUnload();
+        return (Scene *)vec_pop(&this->m_scenes);
     } else {
         return NULL;
     }
 }
 
-Stage *Director::replaceStage(Stage *stage) {
-    if (this->m_stages.length > 0) {
-        Stage *prev = (Stage *)vec_pop(&this->m_stages);
-        vec_push(&this->m_stages, stage);
+Scene *Director::replaceScene(Scene *scene) {
+    if (this->m_scenes.length) {
+        Scene *prev = (Scene *)vec_pop(&this->m_scenes);
+        vec_push(&this->m_scenes, scene);
         return prev;
     } else {
         return NULL;
     }
 }
 
+void Director::drawScene() {
+    if (this->m_scenes.length) {
+        Scene *current = (Scene *)vec_last(&this->m_scenes);
+        current->draw();
+    }
+}
+
 Director::Director() {
-    vec_init(&this->m_stages);
+    vec_init(&this->m_scenes);
 }
 
 Director::~Director() {
-    vec_deinit(&this->m_stages);
+    vec_deinit(&this->m_scenes);
 }

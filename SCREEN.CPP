@@ -5,10 +5,9 @@
 
 #define VRAM ((uint8_t far *)0xa0000)
 
-Screen::Screen() {
-}
-
-Screen::~Screen() {
+Screen *Screen::shared() {
+    static Screen inst;
+    return &inst;
 }
 
 void Screen::setMode(uint8_t mode) {
@@ -54,4 +53,10 @@ int Screen::setPaletteFromFile(const char *filename) {
 
 void Screen::putPixel(int16_t x, int16_t y, uint8_t index) {
     *(VRAM + m_scanLinePos[y] + x) = index;
+}
+
+Screen::Screen() {
+}
+
+Screen::~Screen() {
 }

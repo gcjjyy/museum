@@ -1,6 +1,6 @@
-#include <stage.h>
+#include <scene.h>
 
-class Stage1 : public Stage {
+class Scene2 : public Scene {
    public:
     virtual void onLoad();
     virtual void onUnload();

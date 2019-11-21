@@ -4,6 +4,14 @@
 #include "actor.h"
 
 class Sprite : public Actor {
+   public:
+    Sprite(uint8_t *buf);
+    virtual ~Sprite();
+
+   protected:
+    virtual void onDraw();
+
+   private:
 };
 
 #endif
