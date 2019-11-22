@@ -11,6 +11,9 @@ class Museum {
     static Museum *shared();
 
    public:
+    void playMusic(const char *filename);
+    void stopMusic();
+
     void run();
 
    private:
