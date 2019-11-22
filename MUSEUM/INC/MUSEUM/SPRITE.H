@@ -5,13 +5,14 @@
 
 class Sprite : public Actor {
    public:
-    Sprite(uint8_t *buf);
+    Sprite(const uint8_t *buf);
     virtual ~Sprite();
 
    protected:
     virtual void onDraw();
 
    private:
+    const uint8_t *m_buf;
 };
 
 #endif

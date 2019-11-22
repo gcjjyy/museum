@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
 
     printf("- Output: %s\n", g_header_filename);
 
-    fprintf(g_fp, "unsigned char %s[] = {\n", argv[3]);
+    fprintf(g_fp, "const unsigned char %s[] = {\n", argv[3]);
     fprintf(g_fp, "0x%02x, 0x%02x,\n", *(((uint8_t *)&g_width) + 0), *(((uint8_t *)&g_width) + 1));
     fprintf(g_fp, "0x%02x, 0x%02x,\n", *(((uint8_t *)&g_height) + 0), *(((uint8_t *)&g_height) + 1));
 
