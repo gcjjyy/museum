@@ -3,6 +3,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+#define ALPHA_THRESHOLD (8)
+
 #pragma pack(push, 1)
 typedef struct {
     uint8_t r;
@@ -39,6 +41,20 @@ uint8_t findClosestColorIndex(uint8_t r, uint8_t g, uint8_t b) {
 }
 
 void convert32bpp() {
+    for (int i = 0; i < g_height; i++) {
+        for (int j = 0; j < g_width; j++) {
+            uint8_t r = g_buf[(g_width * i + j) * 4 + 0];
+            uint8_t g = g_buf[(g_width * i + j) * 4 + 1];
+            uint8_t b = g_buf[(g_width * i + j) * 4 + 2];
+            uint8_t a = g_buf[(g_width * i + j) * 4 + 3];
+
+            if (a < ALPHA_THRESHOLD) {
+                fprintf(g_fp, "0xff,");
+            } else {
+                fprintf(g_fp, "0x%02x,", findClosestColorIndex(r, g, b));
+            }
+        }
+    }
 }
 
 void convert24bpp() {
