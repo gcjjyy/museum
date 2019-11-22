@@ -1,4 +1,5 @@
 #include <conio.h>
+#include <dos.h>
 #include <gat_wc/gat_wc.h>
 #include <museum/common.h>
 #include <museum/director.h>
@@ -14,16 +15,16 @@ Museum *Museum::shared() {
 }
 
 void Museum::init() {
-    gatInit();
-    gatSetVol(100);
-
     Screen::shared()->setMode(0x13);
+    // gatInit();
+    // gatSetVol(100);
 }
 
 void Museum::run() {
     m_running = TRUE;
     while (m_running) {
         Director::shared()->drawScene();
+        Screen::shared()->update();
 
         if (kbhit()) {
             char ch = getch();
@@ -35,8 +36,9 @@ void Museum::run() {
 }
 
 void Museum::deinit() {
+    // stopMusic();
+    // gatClose();
     Screen::shared()->setMode(0x03);
-    gatClose();
 }
 
 void Museum::playMusic(const char *filename) {

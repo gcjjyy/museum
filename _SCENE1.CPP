@@ -2,15 +2,23 @@
 #include <stdio.h>
 #include "_scene1.h"
 #include "_scene2.h"
-#include "rockman.h"
+
+#include "asset/desert.h"
+//#include "asset/enemy_lg.h"
+//#include "asset/enemy_md.h"
+//#include "asset/enemy_sm.h"
+#include "asset/explo.h"
+#include "asset/laser.h"
+//#include "asset/power_up.h"
+#include "asset/ship.h"
 
 void Scene1::onLoad() {
-    printf("Scene1 Created\n");
-    Screen::shared()->setPaletteFromFile("DP256.PAL");
-    this->getSceneRoot()->addActor(new Sprite(rockman));
-    Museum::shared()->playMusic("BT-STRST.GAT");
+    this->getSceneRoot()->addActor(new Sprite(desert))->setCoord(0, 0);
+    this->getSceneRoot()->addActor(new Sprite(explo))->setCoord(0, 0);
+    this->getSceneRoot()->addActor(new Sprite(laser))->setCoord(0, 32);
+    this->getSceneRoot()->addActor(new Sprite(ship))->setCoord(0, 64);
+    // Museum::shared()->playMusic("MUSIC/BT-STRST.GAT");
 }
 
 void Scene1::onUnload() {
-    printf("Scene1 Destroyed\n");
 }

@@ -2,6 +2,7 @@
 #include <i86.h>
 #include <museum/screen.h>
 #include <stdio.h>
+#include <memory.h>
 
 #define VRAM ((uint8_t far *)0xa0000)
 
@@ -53,12 +54,19 @@ int Screen::setPaletteFromFile(const char *filename) {
 
 void Screen::putPixel(int16_t x, int16_t y, uint8_t index) {
     if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT) {
-        *(VRAM + m_scanLinePos[y] + x) = index;
+        m_fb[m_scanLinePos[y] + x] = index;
     }
 }
 
+void Screen::update() {
+    memcpy((void far *)VRAM, (void *)m_fb, SCREEN_WIDTH * SCREEN_HEIGHT);
+}
+
 Screen::Screen() {
+    m_fb = new uint8_t[SCREEN_WIDTH * SCREEN_HEIGHT];
+    memset((void *)m_fb, 0x00, SCREEN_WIDTH * SCREEN_HEIGHT);
 }
 
 Screen::~Screen() {
+    delete [] m_fb;
 }

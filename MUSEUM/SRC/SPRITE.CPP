@@ -20,7 +20,10 @@ Sprite::~Sprite() {
 void Sprite::onDraw() {
     for (int i = 0; i < this->getHeight(); i++) {
         for (int j = 0; j < this->getWidth(); j++) {
-            Screen::shared()->putPixel(j, i, this->m_buf[this->getWidth() * i + j]);
+            uint8_t index = this->m_buf[this->getWidth() * i + j];
+            if (index != 0xff) {
+                Screen::shared()->putPixel(this->getX() + j, this->getY() + i, index);
+            }
         }
     }
 }

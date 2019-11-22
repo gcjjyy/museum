@@ -7,6 +7,7 @@
 
 int main(int argc, char *argv[]) {
     Museum::shared()->init();
+    Screen::shared()->setPaletteFromFile("ASSET/DP256.PAL");
 
     Scene1 *scene1 = new Scene1();
     Director::shared()->pushScene(scene1);

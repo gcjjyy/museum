@@ -14,12 +14,15 @@ class Screen {
 
     void putPixel(int16_t x, int16_t y, uint8_t index);
 
+    void update();
+
    private:
     Screen();
     ~Screen();
 
    private:
     uint32_t m_scanLinePos[SCREEN_HEIGHT];
+    uint8_t *m_fb;
 };
 
 #endif

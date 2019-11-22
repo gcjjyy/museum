@@ -4,8 +4,10 @@
 #define SCREEN_WIDTH (320)
 #define SCREEN_HEIGHT (200)
 
+#ifndef TRUE
 #define TRUE (1)
 #define FALSE (0)
+#endif
 
 #define MUSM_OK (0)
 #define MUSM_ERR (-1)

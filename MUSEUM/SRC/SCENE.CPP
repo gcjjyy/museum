@@ -27,7 +27,8 @@ void Scene::draw() {
             int iter = 0;
             void *child = NULL;
 
-            vec_foreach(&actor->m_child, child, iter) {
+            // Push children via reversed order for BSP
+            vec_foreach_rev(&actor->m_child, child, iter) {
                 vec_push(&queue, child);
             }
         }
