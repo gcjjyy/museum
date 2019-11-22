@@ -11,7 +11,7 @@ Sprite::Sprite(const uint8_t *buf) {
         (buf[1] << 8) | (buf[0]),
         (buf[3] << 8) | (buf[2]));
 
-    this->m_buf = buf;
+    this->m_buf = (buf + 4);
 }
 
 Sprite::~Sprite() {
