@@ -8,5 +8,4 @@ Sprite::~Sprite() {
 }
 
 void Sprite::onDraw() {
-    printf("Sprite::onDraw...\n");
 }
