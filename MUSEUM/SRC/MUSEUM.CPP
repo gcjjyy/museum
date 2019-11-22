@@ -1,10 +1,10 @@
-#include <stdio.h>
 #include <conio.h>
+#include <gat_wc/gat_wc.h>
 #include <museum/common.h>
 #include <museum/director.h>
 #include <museum/museum.h>
 #include <museum/screen.h>
-#include <gat_wc/gat_wc.h>
+#include <stdio.h>
 
 #define GAT_MUSIC_NO (0)
 
@@ -13,12 +13,14 @@ Museum *Museum::shared() {
     return &inst;
 }
 
-void Museum::run() {
-    ::gatInit();
-    ::gatSetVol(100);
+void Museum::init() {
+    gatInit();
+    gatSetVol(100);
 
     Screen::shared()->setMode(0x13);
+}
 
+void Museum::run() {
     m_running = TRUE;
     while (m_running) {
         Director::shared()->drawScene();
@@ -30,10 +32,11 @@ void Museum::run() {
             }
         }
     }
+}
 
+void Museum::deinit() {
     Screen::shared()->setMode(0x03);
-
-    ::gatClose();
+    gatClose();
 }
 
 void Museum::playMusic(const char *filename) {

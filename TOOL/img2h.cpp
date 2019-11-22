@@ -18,8 +18,24 @@ static uint16_t g_width;
 static uint16_t g_height;
 static rgb_t g_pal[256];
 
-uint8_t findNearestIndex(uint8_t r, uint8_t g, uint8_t b) {
-    return r;
+uint8_t findClosestColorIndex(uint8_t r, uint8_t g, uint8_t b) {
+    float min = 100000000.0f;
+    uint8_t minIndex = 0;
+
+    for (int i = 0; i < 256; i++) {
+        float dr = ((float)g_pal[i].r - (float)r) * 0.30f;
+        float dg = ((float)g_pal[i].g - (float)g) * 0.59f;
+        float db = ((float)g_pal[i].b - (float)b) * 0.11f;
+
+        float d = (dr * dr) + (dg * dg) + (db * db);
+
+        if (d < min) {
+            min = d;
+            minIndex = i;
+        }
+    }
+
+    return minIndex;
 }
 
 void convert32bpp() {
@@ -32,7 +48,7 @@ void convert24bpp() {
             uint8_t g = g_buf[(g_width * i + j) * 3 + 1];
             uint8_t b = g_buf[(g_width * i + j) * 3 + 2];
 
-            fprintf(g_fp, "0x%02x,", findNearestIndex(r, g, b));
+            fprintf(g_fp, "0x%02x,", findClosestColorIndex(r, g, b));
         }
     }
 }

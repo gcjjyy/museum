@@ -6,13 +6,16 @@
 #include "_scene3.h"
 
 int main(int argc, char *argv[]) {
-    Scene1 *scene1 = new Scene1();
+    Museum::shared()->init();
 
+    Scene1 *scene1 = new Scene1();
     Director::shared()->pushScene(scene1);
 
     Museum::shared()->run();
 
     delete Director::shared()->popScene();
+
+    Museum::shared()->deinit();
 
     return 0;
 }
