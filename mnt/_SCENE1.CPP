@@ -7,17 +7,19 @@
 #include "asset/enemy_lg.h"
 #include "asset/enemy_md.h"
 #include "asset/enemy_sm.h"
+#include "asset/eng8x16.h"
 #include "asset/explo.h"
 #include "asset/laser.h"
 #include "asset/power_up.h"
 #include "asset/ship.h"
-#include "asset/eng8x16.h"
 
 void Scene1::onLoad() {
     this->getSceneRoot()->addActor(new Sprite(desert))->setCoord(0, 0);
     this->getSceneRoot()->addActor(new Sprite(explo, 5, 1))->setCoord(0, 0);
     this->getSceneRoot()->addActor(new Sprite(laser, 2, 2))->setCoord(0, 32);
-    this->getSceneRoot()->addActor(new Sprite(ship, 5, 2))->setCoord(0, 64);
+
+    m_player = this->getSceneRoot()->addActor(new Sprite(ship, 5, 2));
+    m_player->setCoord(0, 128);
 
     this->getSceneRoot()->addActor(new Sprite(enemy_lg, 2, 1))->setCoord(160, 0);
     this->getSceneRoot()->addActor(new Sprite(enemy_md, 2, 1))->setCoord(160, 32);
@@ -30,4 +32,34 @@ void Scene1::onLoad() {
 }
 
 void Scene1::onUnload() {
+}
+
+void Scene1::onDraw() {
+    if (Museum::shared()->getKeyState(KEY_UP)) {
+        m_player->setCoord(
+            m_player->getX(),
+            m_player->getY() - 1);
+    }
+
+    if (Museum::shared()->getKeyState(KEY_LEFT)) {
+        m_player->setCoord(
+            m_player->getX() - 1,
+            m_player->getY());
+    }
+
+    if (Museum::shared()->getKeyState(KEY_RIGHT)) {
+        m_player->setCoord(
+            m_player->getX() + 1,
+            m_player->getY());
+    }
+
+    if (Museum::shared()->getKeyState(KEY_DOWN)) {
+        m_player->setCoord(
+            m_player->getX(),
+            m_player->getY() + 1);
+    }
+
+    if (Museum::shared()->getKeyState(KEY_ESC)) {
+        Museum::shared()->quit();
+    }
 }

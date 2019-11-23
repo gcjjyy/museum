@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <museum/director.h>
+#include <stdio.h>
 
 Director *Director::shared() {
     static Director inst;
@@ -34,6 +34,7 @@ void Director::drawScene() {
     if (this->m_scenes.length) {
         Scene *current = (Scene *)vec_last(&this->m_scenes);
         current->draw();
+        current->onDraw();
     }
 }
 

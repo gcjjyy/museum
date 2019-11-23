@@ -11,8 +11,9 @@ class Scene {
     virtual ~Scene();
 
    public:
-    virtual void onLoad() = 0;
-    virtual void onUnload() = 0;
+    virtual void onLoad() {}
+    virtual void onUnload() {}
+    virtual void onDraw() {}
 
    public:
     void draw();

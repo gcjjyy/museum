@@ -8,6 +8,22 @@
 #include <museum/sprite.h>
 #include <museum/text.h>
 
+typedef enum {
+    KEY_ESC,
+    KEY_UP,
+    KEY_LEFT,
+    KEY_RIGHT,
+    KEY_DOWN,
+    KEY_ENTER,
+    KEY_SPACE,
+    KEY_L_CTRL,
+    KEY_R_CTRL,
+    KEY_L_ALT,
+    KEY_R_ALT,
+    KEY_L_SHIFT,
+    KEY_R_SHIFT
+} key_t;
+
 class Museum {
    public:
     static Museum *shared();
@@ -18,7 +34,10 @@ class Museum {
 
     void init();
     void run();
+    void quit();
     void deinit();
+
+    boolean_t getKeyState(key_t key);
 
    private:
     Museum();
