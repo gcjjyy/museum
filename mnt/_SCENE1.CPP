@@ -14,14 +14,14 @@
 
 void Scene1::onLoad() {
     this->getSceneRoot()->addActor(new Sprite(desert))->setCoord(0, 0);
-    this->getSceneRoot()->addActor(new Sprite(explo))->setCoord(0, 0);
-    this->getSceneRoot()->addActor(new Sprite(laser))->setCoord(0, 32);
-    this->getSceneRoot()->addActor(new Sprite(ship))->setCoord(0, 64);
+    this->getSceneRoot()->addActor(new Sprite(explo, 5, 1))->setCoord(0, 0);
+    this->getSceneRoot()->addActor(new Sprite(laser, 2, 2))->setCoord(0, 32);
+    this->getSceneRoot()->addActor(new Sprite(ship, 5, 2))->setCoord(0, 64);
 
-    this->getSceneRoot()->addActor(new Sprite(enemy_lg))->setCoord(160, 0);
-    this->getSceneRoot()->addActor(new Sprite(enemy_md))->setCoord(160, 32);
-    this->getSceneRoot()->addActor(new Sprite(enemy_sm))->setCoord(160, 64);
-    this->getSceneRoot()->addActor(new Sprite(power_up))->setCoord(160, 96);
+    this->getSceneRoot()->addActor(new Sprite(enemy_lg, 2, 1))->setCoord(160, 0);
+    this->getSceneRoot()->addActor(new Sprite(enemy_md, 2, 1))->setCoord(160, 32);
+    this->getSceneRoot()->addActor(new Sprite(enemy_sm, 2, 1))->setCoord(160, 64);
+    this->getSceneRoot()->addActor(new Sprite(power_up, 2, 2))->setCoord(160, 96);
 
     Museum::shared()->playMusic("MUSIC/BT-STRST.GAT");
 }

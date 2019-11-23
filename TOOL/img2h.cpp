@@ -109,10 +109,12 @@ int main(int argc, char *argv[]) {
 
     switch (channels) {
         case 4:
+            fprintf(g_fp, "0x01,\n");
             convert32bpp();
             break;
 
         case 3:
+            fprintf(g_fp, "0x00,\n");
             convert24bpp();
             break;
 
