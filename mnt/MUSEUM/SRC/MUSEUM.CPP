@@ -16,8 +16,8 @@ Museum *Museum::shared() {
 
 void Museum::init() {
     Screen::shared()->setMode(0x13);
-    // gatInit();
-    // gatSetVol(100);
+    gatInit();
+    gatSetVol(100);
 }
 
 void Museum::run() {
@@ -36,8 +36,7 @@ void Museum::run() {
 }
 
 void Museum::deinit() {
-    // stopMusic();
-    // gatClose();
+    gatClose();
     Screen::shared()->setMode(0x03);
 }
 

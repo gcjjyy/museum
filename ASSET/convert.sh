@@ -6,3 +6,12 @@
 ../TOOL/img2h laser-bolts.png DP256.PAL laser
 ../TOOL/img2h power-up.png DP256.PAL power_up
 ../TOOL/img2h ship.png DP256.PAL ship
+
+mv desert.h ../mnt/ASSET/
+mv enemy_lg.h ../mnt/ASSET/
+mv enemy_md.h ../mnt/ASSET/
+mv enemy_sm.h ../mnt/ASSET/
+mv explo.h ../mnt/ASSET/
+mv laser.h ../mnt/ASSET/
+mv power_up.h ../mnt/ASSET/
+mv ship.h ../mnt/ASSET/

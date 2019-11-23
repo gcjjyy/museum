@@ -4,12 +4,12 @@
 #include "_scene2.h"
 
 #include "asset/desert.h"
-//#include "asset/enemy_lg.h"
-//#include "asset/enemy_md.h"
-//#include "asset/enemy_sm.h"
+#include "asset/enemy_lg.h"
+#include "asset/enemy_md.h"
+#include "asset/enemy_sm.h"
 #include "asset/explo.h"
 #include "asset/laser.h"
-//#include "asset/power_up.h"
+#include "asset/power_up.h"
 #include "asset/ship.h"
 
 void Scene1::onLoad() {
@@ -17,7 +17,13 @@ void Scene1::onLoad() {
     this->getSceneRoot()->addActor(new Sprite(explo))->setCoord(0, 0);
     this->getSceneRoot()->addActor(new Sprite(laser))->setCoord(0, 32);
     this->getSceneRoot()->addActor(new Sprite(ship))->setCoord(0, 64);
-    // Museum::shared()->playMusic("MUSIC/BT-STRST.GAT");
+
+    this->getSceneRoot()->addActor(new Sprite(enemy_lg))->setCoord(160, 0);
+    this->getSceneRoot()->addActor(new Sprite(enemy_md))->setCoord(160, 32);
+    this->getSceneRoot()->addActor(new Sprite(enemy_sm))->setCoord(160, 64);
+    this->getSceneRoot()->addActor(new Sprite(power_up))->setCoord(160, 96);
+
+    Museum::shared()->playMusic("MUSIC/BT-STRST.GAT");
 }
 
 void Scene1::onUnload() {
