@@ -6,6 +6,7 @@
 #include <museum/scene.h>
 #include <museum/screen.h>
 #include <museum/sprite.h>
+#include <museum/text.h>
 
 class Museum {
    public:

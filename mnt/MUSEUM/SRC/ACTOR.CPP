@@ -6,14 +6,18 @@ Actor::Actor() {
 Actor::~Actor() {
 }
 
-void Actor::setCoord(int16_t x, int16_t y) {
+Actor *Actor::setCoord(int16_t x, int16_t y) {
     this->m_x = x;
     this->m_y = y;
+
+    return this;
 }
 
-void Actor::setSize(int16_t width, int16_t height) {
+Actor *Actor::setSize(int16_t width, int16_t height) {
     this->m_width = width;
     this->m_height = height;
+
+    return this;
 }
 
 int16_t Actor::getX() {

@@ -1,6 +1,5 @@
 #include <museum/screen.h>
 #include <museum/sprite.h>
-#include <stdio.h>
 
 Sprite::Sprite(const uint8_t *buf, uint16_t gridX, uint16_t gridY) {
     // Buffer format

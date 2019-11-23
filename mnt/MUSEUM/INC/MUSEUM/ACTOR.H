@@ -14,8 +14,8 @@ class Actor {
     virtual ~Actor();
 
    public:
-    void setCoord(int16_t x, int16_t y);
-    void setSize(int16_t width, int16_t height);
+    Actor *setCoord(int16_t x, int16_t y);
+    Actor *setSize(int16_t width, int16_t height);
 
     int16_t getX();
     int16_t getY();
