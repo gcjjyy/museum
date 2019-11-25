@@ -74,7 +74,7 @@ void Museum::stopMusic() {
     gatFree(GAT_MUSIC_NO);
 }
 
-boolean_t Museum::getKeyState(key_t key) {
+boolean_t Museum::getKeyState(Key key) {
     switch (key) {
         case KEY_ESC:
             return (g_keys[0x01]);

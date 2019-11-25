@@ -5,6 +5,7 @@ Sprite::Sprite(const uint8_t *buf, uint16_t gridX, uint16_t gridY) {
     // Buffer format
     // - 2 bytes: width (Little endian)
     // - 2 bytes: height (Little endian)
+    // - 1 byte: use Colorkey (1: Use, 0: Not use)
     // - width * height bytes: Image data
     this->m_imageWidth = (buf[1] << 8) | (buf[0]);
     this->m_imageHeight = (buf[3] << 8) | (buf[2]);

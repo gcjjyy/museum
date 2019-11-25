@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "_scene1.h"
 #include "_scene2.h"
-
 #include "asset/desert.h"
 #include "asset/enemy_lg.h"
 #include "asset/enemy_md.h"
@@ -14,19 +13,25 @@
 #include "asset/ship.h"
 
 void Scene1::onLoad() {
-    this->getSceneRoot()->addActor(new Sprite(desert))->setCoord(0, 0);
+    this->m_bgY = 0.0f;
+
+    this->m_bgBottom = this->getSceneRoot()->addActor(new Sprite(desert));
+    this->m_bgBottom->setCoord(0, this->m_bgY);
+
+    this->m_bgTop = this->getSceneRoot()->addActor(new Sprite(desert));
+    this->m_bgTop->setCoord(0, this->m_bgY - this->m_bgTop->getHeight());
+
+    this->m_player = this->getSceneRoot()->addActor(new Sprite(ship, 5, 2));
+    this->m_player->setCoord(0, 128);
+
+    this->getSceneRoot()->addActor((new Text(eng8x16, FONT_ENGLISH_8x16))->setText("Hello")->setFontColor(4))->setCoord(0, 128);
+
     this->getSceneRoot()->addActor(new Sprite(explo, 5, 1))->setCoord(0, 0);
     this->getSceneRoot()->addActor(new Sprite(laser, 2, 2))->setCoord(0, 32);
-
-    m_player = this->getSceneRoot()->addActor(new Sprite(ship, 5, 2));
-    m_player->setCoord(0, 128);
-
     this->getSceneRoot()->addActor(new Sprite(enemy_lg, 2, 1))->setCoord(160, 0);
     this->getSceneRoot()->addActor(new Sprite(enemy_md, 2, 1))->setCoord(160, 32);
     this->getSceneRoot()->addActor(new Sprite(enemy_sm, 2, 1))->setCoord(160, 64);
     this->getSceneRoot()->addActor(new Sprite(power_up, 2, 2))->setCoord(160, 96);
-
-    ((Text *)this->getSceneRoot()->addActor(new Text(eng8x16, FONT_ENGLISH_8x16))->setCoord(0, 128))->setText("Hello")->setFontColor(4);
 
     Museum::shared()->playMusic("MUSIC/BT-STRST.GAT");
 }
@@ -61,5 +66,12 @@ void Scene1::onDraw(float dt) {
 
     if (Museum::shared()->getKeyState(KEY_ESC)) {
         Museum::shared()->quit();
+    }
+
+    this->m_bgY += 0.01f;// (dt * 16.0f);
+    this->m_bgBottom->setCoord(0, m_bgY);
+    this->m_bgTop->setCoord(0, m_bgY - this->m_bgTop->getHeight());
+    if (this->m_bgY >= this->m_bgTop->getHeight()) {
+        this->m_bgY -= this->m_bgTop->getHeight();
     }
 }

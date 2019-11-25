@@ -22,7 +22,7 @@ typedef enum {
     KEY_R_ALT,
     KEY_L_SHIFT,
     KEY_R_SHIFT
-} key_t;
+} Key;
 
 class Museum {
    public:
@@ -37,7 +37,7 @@ class Museum {
     void quit();
     void deinit();
 
-    boolean_t getKeyState(key_t key);
+    boolean_t getKeyState(Key key);
 
    private:
     float getClock();

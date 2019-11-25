@@ -8,4 +8,7 @@ class Scene1 : public Scene {
 
    private:
     Actor *m_player;
+    Actor *m_bgTop;
+    Actor *m_bgBottom;
+    float m_bgY;
 };
