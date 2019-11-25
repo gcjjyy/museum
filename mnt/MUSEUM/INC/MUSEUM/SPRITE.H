@@ -17,12 +17,14 @@ class Sprite : public Actor {
 
    private:
     const uint8_t *m_buf;
-    uint16_t m_gridX;
-    uint16_t m_gridY;
-    uint16_t m_frameCount;
-    uint16_t m_frameWidth;
-    uint16_t m_frameHeight;
-    uint16_t m_frameIndex;
+    int16_t m_gridX;
+    int16_t m_gridY;
+    int16_t m_frameCount;
+    int16_t m_frameWidth;
+    int16_t m_frameHeight;
+    int16_t m_frameIndex;
+    int16_t m_imageWidth;
+    int16_t m_imageHeight;
     boolean_t m_useColorKey;
     uint8_t m_colorKey;
 };

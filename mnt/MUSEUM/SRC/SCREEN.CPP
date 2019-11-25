@@ -1,8 +1,8 @@
 #include <conio.h>
 #include <i86.h>
+#include <memory.h>
 #include <museum/screen.h>
 #include <stdio.h>
-#include <memory.h>
 
 #define VRAM ((uint8_t far *)0xa0000)
 
@@ -52,6 +52,45 @@ int Screen::setPaletteFromFile(const char *filename) {
     return MUSM_OK;
 }
 
+/**
+ * @brief Draw a bitmap buffer via memcpy (Doesn't support colorkey)
+ */
+void Screen::drawBitmap(int16_t x, int16_t y, const uint8_t *buf,
+                        int16_t cropX, int16_t cropY, int16_t cropWidth, int16_t cropHeight,
+                        int16_t imageWidth, int16_t imageHeight) {
+    int16_t clipX = x;
+    int16_t clipY = y;
+    int16_t clipWidth = cropWidth;
+    int16_t clipHeight = cropHeight;
+    int16_t offsetX = cropX;
+    int16_t offsetY = cropY;
+
+    if (clipX < 0) {
+        clipWidth += clipX;
+        offsetX -= clipX;
+        clipX = 0;
+    }
+
+    if (clipY < 0) {
+        clipHeight += clipY;
+        offsetY -= clipY;
+        clipY = 0;
+    }
+
+    if ((clipX + clipWidth) > SCREEN_WIDTH) {
+        clipWidth -= ((clipX + clipWidth) - SCREEN_WIDTH);
+    }
+
+    if ((clipY + clipHeight) > SCREEN_HEIGHT) {
+        clipHeight -= ((clipY + clipHeight) - SCREEN_HEIGHT);
+    }
+
+    for (int16_t i = 0; i < clipHeight; i++) {
+        memcpy(&m_fb[m_scanLinePos[i + clipY] + clipX],
+               &buf[imageWidth * (i + offsetY) + offsetX], clipWidth);
+    }
+}
+
 void Screen::putPixel(int16_t x, int16_t y, uint8_t index) {
     if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT) {
         m_fb[m_scanLinePos[y] + x] = index;
@@ -68,5 +107,5 @@ Screen::Screen() {
 }
 
 Screen::~Screen() {
-    delete [] m_fb;
+    delete[] m_fb;
 }
