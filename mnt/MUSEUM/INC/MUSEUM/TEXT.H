@@ -17,7 +17,7 @@ class Text : public Actor {
     Text *setText(const char *text);
 
    protected:
-    virtual void onDraw();
+    virtual void onDraw(float dt);
 
    private:
     void drawFont8x16(char ch, int16_t *x, int16_t *y);

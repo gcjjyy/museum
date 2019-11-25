@@ -40,6 +40,9 @@ class Museum {
     boolean_t getKeyState(key_t key);
 
    private:
+    float getClock();
+
+   private:
     Museum();
     ~Museum();
 

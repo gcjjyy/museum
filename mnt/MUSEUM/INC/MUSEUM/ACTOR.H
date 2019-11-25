@@ -25,7 +25,7 @@ class Actor {
     Actor *addActor(Actor *actor);
 
    protected:
-    virtual void onDraw() { /* Abstract */
+    virtual void onDraw(float dt) { /* Abstract */
     }
 
    private:

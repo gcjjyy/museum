@@ -13,7 +13,7 @@ class Sprite : public Actor {
     void disableColorKey();
 
    protected:
-    virtual void onDraw();
+    virtual void onDraw(float dt);
 
    private:
     const uint8_t *m_buf;

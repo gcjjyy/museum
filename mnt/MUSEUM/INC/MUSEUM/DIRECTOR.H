@@ -12,7 +12,7 @@ class Director {
     void pushScene(Scene *scene);
     Scene *popScene();
     Scene *replaceScene(Scene *scene);
-    void drawScene();
+    void drawScene(float dt);
 
    private:
     Director();

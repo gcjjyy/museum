@@ -34,7 +34,7 @@ void Scene1::onLoad() {
 void Scene1::onUnload() {
 }
 
-void Scene1::onDraw() {
+void Scene1::onDraw(float dt) {
     if (Museum::shared()->getKeyState(KEY_UP)) {
         m_player->setCoord(
             m_player->getX(),

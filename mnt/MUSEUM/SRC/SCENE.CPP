@@ -12,7 +12,7 @@ Actor *Scene::getSceneRoot() {
     return this->m_sceneRoot;
 }
 
-void Scene::draw() {
+void Scene::draw(float dt) {
     Actor *actor;
     vec_void_t queue;
 
@@ -21,7 +21,7 @@ void Scene::draw() {
 
     while (queue.length) {
         actor = (Actor *)vec_pop(&queue);
-        actor->onDraw();
+        actor->onDraw(dt);
 
         if (actor->m_child.length) {
             int iter = 0;

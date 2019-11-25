@@ -46,7 +46,7 @@ void Text::drawFont8x16(char ch, int16_t *x, int16_t *y) {
     *x = *x + 8;
 }
 
-void Text::onDraw() {
+void Text::onDraw(float dt) {
     int16_t x = this->getX();
     int16_t y = this->getY();
 

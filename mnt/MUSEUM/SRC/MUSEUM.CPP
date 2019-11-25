@@ -6,6 +6,7 @@
 #include <museum/museum.h>
 #include <museum/screen.h>
 #include <stdio.h>
+#include <time.h>
 
 #define GAT_MUSIC_NO (0)
 
@@ -45,10 +46,16 @@ void Museum::deinit() {
 }
 
 void Museum::run() {
+    float before;
+    float now;
+
+    before = this->getClock();
     m_running = TRUE;
     while (m_running) {
-        Director::shared()->drawScene();
+        now = this->getClock();
+        Director::shared()->drawScene(now - before);
         Screen::shared()->update();
+        before = now;
     }
 }
 
@@ -98,6 +105,10 @@ boolean_t Museum::getKeyState(key_t key) {
         default:
             return FALSE;
     }
+}
+
+float Museum::getClock() {
+    return (float)clock() / CLOCKS_PER_SEC;
 }
 
 Museum::Museum() {

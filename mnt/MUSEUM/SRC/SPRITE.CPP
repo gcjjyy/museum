@@ -40,7 +40,7 @@ void Sprite::disableColorKey() {
     this->m_useColorKey = FALSE;
 }
 
-void Sprite::onDraw() {
+void Sprite::onDraw(float dt) {
     int16_t frameX = (this->m_frameIndex % this->m_gridX) * this->m_frameWidth;
     int16_t frameY = (this->m_frameIndex / this->m_gridX) * this->m_frameHeight;
 

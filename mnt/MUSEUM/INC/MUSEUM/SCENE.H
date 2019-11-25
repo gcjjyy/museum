@@ -13,10 +13,10 @@ class Scene {
    public:
     virtual void onLoad() {}
     virtual void onUnload() {}
-    virtual void onDraw() {}
+    virtual void onDraw(float dt) {}
 
    public:
-    void draw();
+    void draw(float dt);
 
    protected:
     Actor *getSceneRoot();

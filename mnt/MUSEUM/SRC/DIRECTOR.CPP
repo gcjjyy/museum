@@ -30,11 +30,11 @@ Scene *Director::replaceScene(Scene *scene) {
     }
 }
 
-void Director::drawScene() {
+void Director::drawScene(float dt) {
     if (this->m_scenes.length) {
         Scene *current = (Scene *)vec_last(&this->m_scenes);
-        current->draw();
-        current->onDraw();
+        current->draw(dt);
+        current->onDraw(dt);
     }
 }
 

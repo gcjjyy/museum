@@ -98,7 +98,7 @@ void Screen::putPixel(int16_t x, int16_t y, uint8_t index) {
 }
 
 void Screen::update() {
-    memcpy((void far *)VRAM, (void *)m_fb, SCREEN_WIDTH * SCREEN_HEIGHT);
+    memcpy((void *)VRAM, (void *)m_fb, SCREEN_WIDTH * SCREEN_HEIGHT);
 }
 
 Screen::Screen() {
