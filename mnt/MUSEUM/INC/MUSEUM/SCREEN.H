@@ -9,6 +9,8 @@ class Screen {
 
    public:
     void setMode(uint8_t mode);
+
+    void clear();
     void setPalette(uint8_t index, uint8_t r, uint8_t g, uint8_t b);
     int setPaletteFromFile(const char *filename);
 

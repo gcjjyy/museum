@@ -60,6 +60,7 @@ void Museum::run() {
     m_running = TRUE;
     while (m_running) {
         now = this->getClock();
+        Screen::shared()->clear();
         Director::shared()->drawScene(now - before);
         Screen::shared()->update();
         before = now;
