@@ -33,7 +33,13 @@ void Scene1::onLoad() {
     this->getSceneRoot()->addActor(new Sprite(enemy_sm, 2, 1))->setCoord(160, 64);
     this->getSceneRoot()->addActor(new Sprite(power_up, 2, 2))->setCoord(160, 96);
 
-    Museum::shared()->playMusic("MUSIC/BT-STRST.GAT");
+    Museum::shared()->loadWAV(0, "ASSET/1-UP.WAV");
+    Museum::shared()->loadWAV(1, "ASSET/COIN.WAV");
+    Museum::shared()->loadWAV(2, "ASSET/POWERUP.WAV");
+    Museum::shared()->loadWAV(3, "ASSET/THROWING.WAV");
+
+    Museum::shared()->loadGAT(0, "ASSET/SIDE-END.GAT");
+    Museum::shared()->playGAT(0);
 }
 
 void Scene1::onUnload() {
@@ -68,7 +74,15 @@ void Scene1::onDraw(float dt) {
         Museum::shared()->quit();
     }
 
-    this->m_bgY += 0.01f;// (dt * 16.0f);
+    static int bb = 0;
+    if (Museum::shared()->getKeyState(KEY_SPACE)) {
+        if (!bb) bb = 1;
+    } else if (bb) {
+        bb = 0;
+        Museum::shared()->playWAV(rand() % 4);
+    }
+
+    this->m_bgY += 0.01f;  // (dt * 16.0f);
     this->m_bgBottom->setCoord(0, m_bgY);
     this->m_bgTop->setCoord(0, m_bgY - this->m_bgTop->getHeight());
     if (this->m_bgY >= this->m_bgTop->getHeight()) {

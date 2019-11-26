@@ -29,13 +29,19 @@ class Museum {
     static Museum *shared();
 
    public:
-    void playMusic(const char *filename);
-    void stopMusic();
-
     void init();
+    void deinit();
+
+    void loadGAT(int16_t num, const char *filename);
+    void unloadGAT(int16_t num);
+    void playGAT(int16_t num);
+    void stopGAT();
+
+    void loadWAV(int16_t num, const char *filename);
+    void playWAV(int16_t num);
+
     void run();
     void quit();
-    void deinit();
 
     boolean_t getKeyState(Key key);
 

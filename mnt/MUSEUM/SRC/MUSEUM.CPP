@@ -7,8 +7,9 @@
 #include <museum/screen.h>
 #include <stdio.h>
 #include <time.h>
+#include <wavplay/wavplay.h>
 
-#define GAT_MUSIC_NO (0)
+#define MAX_WAV_OUTPUT (32)
 
 volatile char g_keys[128];
 volatile char g_ekeys[128];
@@ -25,9 +26,12 @@ void Museum::init() {
     // Init graphics
     Screen::shared()->setMode(0x13);
 
-    // Init sound
+    // Init GAT
     gatInit();
     gatSetVol(100);
+
+    // Init wavplay
+    _dgSoundInitVocMaxData(MAX_WAV_OUTPUT);
 
     // Init keyboard
     g_dos_kbd_isr = _dos_getvect(0x09);
@@ -35,7 +39,10 @@ void Museum::init() {
 }
 
 void Museum::deinit() {
-    // Deinit sound
+    // Deinit wavplay
+    _dgSounduninitVoc();
+
+    // Deinit GAT
     gatClose();
 
     // Deinit graphics
@@ -63,15 +70,28 @@ void Museum::quit() {
     m_running = FALSE;
 }
 
-void Museum::playMusic(const char *filename) {
-    if (gatLoad(GAT_MUSIC_NO, (unsigned char *)filename)) {
-        gatPlay(GAT_MUSIC_NO);
-    }
+void Museum::loadGAT(int16_t num, const char *filename) {
+    gatLoad(num, (unsigned char *)filename);
 }
 
-void Museum::stopMusic() {
+void Museum::unloadGAT(int16_t num) {
+    gatFree(num);
+}
+
+void Museum::playGAT(int16_t num) {
+    gatPlay(num);
+}
+
+void Museum::stopGAT() {
     gatStop();
-    gatFree(GAT_MUSIC_NO);
+}
+
+void Museum::loadWAV(int16_t num, const char *filename) {
+    _dgSoundLoadVocDatas(filename, num);
+}
+
+void Museum::playWAV(int16_t num) {
+    dgVoicePlay(num);
 }
 
 boolean_t Museum::getKeyState(Key key) {
