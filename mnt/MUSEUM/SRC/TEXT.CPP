@@ -10,7 +10,7 @@ Text::Text(const uint8_t *buf, FontType fontType) {
 
 Text::~Text() {
     if (this->m_text) {
-        delete [] this->m_text;
+        delete[] this->m_text;
     }
 }
 
@@ -21,7 +21,7 @@ Text *Text::setFontColor(uint8_t index) {
 
 Text *Text::setText(const char *text) {
     if (this->m_text) {
-        delete [] this->m_text;
+        delete[] this->m_text;
         this->m_text = NULL;
     }
 
@@ -38,7 +38,8 @@ void Text::drawFont8x16(char ch, int16_t *x, int16_t *y) {
         uint8_t line = this->m_buf[(ch * 16) + i];
         for (int j = 0; j < 8; j++) {
             if (line & (0x80 >> j)) {
-                Screen::shared()->putPixel((*x) + j, (*y) + i, this->m_fontColor);
+                Screen::shared()->putPixel((*x) + j, (*y) + i,
+                                           this->m_fontColor);
             }
         }
     }

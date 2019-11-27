@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <museum/director.h>
+#include <stdio.h>
 #include "_scene2.h"
 
 void Scene2::onLoad() {
@@ -7,6 +7,4 @@ void Scene2::onLoad() {
     Director::shared()->popScene();
 }
 
-void Scene2::onUnload() {
-    printf("Scene2 Destroyed\n");
-}
+void Scene2::onUnload() { printf("Scene2 Destroyed\n"); }

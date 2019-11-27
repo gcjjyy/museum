@@ -1,16 +1,10 @@
 #include <museum/scene.h>
 
-Scene::Scene() {
-    m_sceneRoot = new Actor();
-}
+Scene::Scene() { m_sceneRoot = new Actor(); }
 
-Scene::~Scene() {
-    delete m_sceneRoot;
-}
+Scene::~Scene() { delete m_sceneRoot; }
 
-Actor *Scene::getSceneRoot() {
-    return this->m_sceneRoot;
-}
+Actor *Scene::getSceneRoot() { return this->m_sceneRoot; }
 
 void Scene::draw(float dt) {
     Actor *actor;

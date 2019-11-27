@@ -3,9 +3,7 @@
 
 #include <museum/actor.h>
 
-typedef enum {
-    FONT_ENGLISH_8x16
-} FontType;
+typedef enum { FONT_ENGLISH_8x16 } FontType;
 
 class Text : public Actor {
    public:

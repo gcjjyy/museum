@@ -67,33 +67,23 @@ void Museum::run() {
     }
 }
 
-void Museum::quit() {
-    m_running = FALSE;
-}
+void Museum::quit() { m_running = FALSE; }
 
 void Museum::loadGAT(int16_t num, const char *filename) {
     gatLoad(num, (unsigned char *)filename);
 }
 
-void Museum::unloadGAT(int16_t num) {
-    gatFree(num);
-}
+void Museum::unloadGAT(int16_t num) { gatFree(num); }
 
-void Museum::playGAT(int16_t num) {
-    gatPlay(num);
-}
+void Museum::playGAT(int16_t num) { gatPlay(num); }
 
-void Museum::stopGAT() {
-    gatStop();
-}
+void Museum::stopGAT() { gatStop(); }
 
 void Museum::loadWAV(int16_t num, const char *filename) {
     _dgSoundLoadVocDatas(filename, num);
 }
 
-void Museum::playWAV(int16_t num) {
-    dgVoicePlay(num);
-}
+void Museum::playWAV(int16_t num) { dgVoicePlay(num); }
 
 boolean_t Museum::getKeyState(Key key) {
     switch (key) {
@@ -128,15 +118,11 @@ boolean_t Museum::getKeyState(Key key) {
     }
 }
 
-float Museum::getClock() {
-    return (float)clock() / CLOCKS_PER_SEC;
-}
+float Museum::getClock() { return (float)clock() / CLOCKS_PER_SEC; }
 
-Museum::Museum() {
-}
+Museum::Museum() {}
 
-Museum::~Museum() {
-}
+Museum::~Museum() {}
 
 static void _interrupt _far _museum_kbd_isr(void) {
     static int extkey = 0;

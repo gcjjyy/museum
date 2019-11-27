@@ -38,10 +38,6 @@ void Director::drawScene(float dt) {
     }
 }
 
-Director::Director() {
-    vec_init(&this->m_scenes);
-}
+Director::Director() { vec_init(&this->m_scenes); }
 
-Director::~Director() {
-    vec_deinit(&this->m_scenes);
-}
+Director::~Director() { vec_deinit(&this->m_scenes); }

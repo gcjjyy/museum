@@ -9,7 +9,6 @@
 #include <string.h>
 
 extern "C" {
-
 void _dgSounduninitVoc(void);
 int _dgSoundInitVocMaxData(int num);
 int _dgSoundLoadVocDatas(const char *wavfname, int num);

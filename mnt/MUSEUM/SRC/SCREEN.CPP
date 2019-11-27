@@ -23,9 +23,7 @@ void Screen::setMode(uint8_t mode) {
     }
 }
 
-void Screen::clear() {
-    memset(m_fb, 0, SCREEN_WIDTH * SCREEN_HEIGHT);
-}
+void Screen::clear() { memset(m_fb, 0, SCREEN_WIDTH * SCREEN_HEIGHT); }
 
 void Screen::setPalette(uint8_t index, uint8_t r, uint8_t g, uint8_t b) {
     outp(0x03c8, index);
@@ -59,8 +57,8 @@ int Screen::setPaletteFromFile(const char *filename) {
 /**
  * @brief Draw a bitmap buffer via memcpy (Doesn't support colorkey)
  */
-void Screen::drawBitmap(int16_t x, int16_t y, const uint8_t *buf,
-                        int16_t cropX, int16_t cropY, int16_t cropWidth, int16_t cropHeight,
+void Screen::drawBitmap(int16_t x, int16_t y, const uint8_t *buf, int16_t cropX,
+                        int16_t cropY, int16_t cropWidth, int16_t cropHeight,
                         int16_t imageWidth, int16_t imageHeight) {
     int16_t clipX = x;
     int16_t clipY = y;
@@ -110,6 +108,4 @@ Screen::Screen() {
     memset((void *)m_fb, 0x00, SCREEN_WIDTH * SCREEN_HEIGHT);
 }
 
-Screen::~Screen() {
-    delete[] m_fb;
-}
+Screen::~Screen() { delete[] m_fb; }

@@ -29,17 +29,14 @@ Sprite::Sprite(const uint8_t *buf, uint16_t gridX, uint16_t gridY) {
     this->setSize(this->m_frameWidth, this->m_frameHeight);
 }
 
-Sprite::~Sprite() {
-}
+Sprite::~Sprite() {}
 
 void Sprite::enableColorKey(uint8_t index) {
     this->m_useColorKey = TRUE;
     this->m_colorKey = index;
 }
 
-void Sprite::disableColorKey() {
-    this->m_useColorKey = FALSE;
-}
+void Sprite::disableColorKey() { this->m_useColorKey = FALSE; }
 
 void Sprite::onDraw(float dt) {
     int16_t frameX = (this->m_frameIndex % this->m_gridX) * this->m_frameWidth;
@@ -49,14 +46,17 @@ void Sprite::onDraw(float dt) {
     // If the sprite doesn't use the colorkey, draw it by method of memory copy.
     if (!this->m_useColorKey) {
         Screen::shared()->drawBitmap(this->getX(), this->getY(), this->m_buf,
-                                     frameX, frameY, this->m_frameWidth, this->m_frameHeight,
-                                     this->m_imageWidth, this->m_imageHeight);
+                                     frameX, frameY, this->m_frameWidth,
+                                     this->m_frameHeight, this->m_imageWidth,
+                                     this->m_imageHeight);
     } else {
         for (int16_t i = 0; i < m_frameHeight; i++) {
             for (int16_t j = 0; j < m_frameWidth; j++) {
-                uint8_t index = this->m_buf[this->m_imageWidth * (frameY + i) + (frameX + j)];
+                uint8_t index = this->m_buf[this->m_imageWidth * (frameY + i) +
+                                            (frameX + j)];
                 if (index != 0xff) {
-                    Screen::shared()->putPixel(this->getX() + j, this->getY() + i, index);
+                    Screen::shared()->putPixel(this->getX() + j,
+                                               this->getY() + i, index);
                 }
             }
         }
